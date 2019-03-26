@@ -40,6 +40,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Media
 	## Captions
 	## Galleries
+# Home Page	
+	# Title	
+	# Confetti	
+
 	--------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Normalize
@@ -546,12 +550,6 @@ textarea {
 /*--------------------------------------------------------------
 # Navigation
 --------------------------------------------------------------*/
-/*
-#navigation-button{
-	border: black solid 2px;
-	height: 25px;
-	width: 25px;
-	}*/
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . .
 navigation-button
@@ -650,27 +648,27 @@ navigation-drawer
 	width: 100%;
 }
 
-#menu-item-35 a{
+.menu-item:nth-child(1) a{
 	z-index: 9;
 	opacity: 0.8;
 }
 
-#menu-item-34 a{
+.menu-item:nth-child(2)  a{
 	z-index: 8;
 	opacity: 0.6;
 }
 
-#menu-item-33 a{
+.menu-item:nth-child(3)  a{
 	z-index: 7;
 	opacity: 0.4;
 }
 
-#menu-item-30 a{
+.menu-item:nth-child(4)  a{
 	z-index: 6;
 	opacity: 0.2;
 }
 
-#menu-item-31 a{
+.menu-item:nth-child(5)  a{
 	z-index: 5;
 	opacity: 0.1;
 }
@@ -806,5 +804,103 @@ object {
 ## Galleries
 --------------------------------------------------------------*/
 
+/*--------------------------------------------------------------
+# Home Page
+--------------------------------------------------------------*/
 
+/*--------------------------------------------------------------
+## Title
+--------------------------------------------------------------*/
+
+
+#title{
+  z-index: 30;
+  position: absolute;
+  top: 35vh;
+  left: 0;
+  width: 100vw;
+  text-align: center;
+}
+
+#electric, #eskimo{
+  display: inline;
+  font-family: Pacifico;
+  font-size: 6rem;
+}
+
+#electric{
+  color: white;
+}
+
+#eskimo{
+  color: #626059;
+}
+
+
+/*--------------------------------------------------------------
+## Confetti
+--------------------------------------------------------------*/
+
+
+.donut{
+  border: solid 3px #FACF25;
+  height: 12px;
+  width: 12px;
+  border-radius: 100%;
+  position: absolute;
+}
+
+.rod{
+  position: absolute;
+  background: white;
+  height: 17px;
+  width: 3px;
+  border-radius: 25px;
+}
+
+.spot{
+  position: absolute;
+  background: #BBD6DD;
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+}
+
+#confettiWrapper{
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#confetti{
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  -webkit-animation-name: sway; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 120s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+  -webkit-animation-timing-function: linear;
+  animation-name: sway;
+  animation-duration: 120s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes sway {
+  0%  {transform: rotate(-10deg); transform-origin: top;}
+  25% {transform: rotate(10deg)}
+  50% {transform: rotate(-10deg); transform-origin: bottom;}
+  75% {transform: rotate(10deg)}
+  100% {transform: rotate(-10deg); transform-origin: top;}
+}
+
+@keyframes sway {
+  0%  {transform: rotate(-10deg); transform-origin: top;}
+  25% {transform: rotate(10deg)}
+  50% {transform: rotate(-10deg); transform-origin: bottom;}
+  75% {transform: rotate(10deg)}
+  100% {transform: rotate(-10deg); transform-origin: top;}
+}
 
