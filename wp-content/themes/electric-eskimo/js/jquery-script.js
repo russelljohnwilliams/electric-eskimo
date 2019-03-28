@@ -5,15 +5,35 @@ var rodCount = 11
 var confettiCount = donutCount + spotCount + rodCount
 var windowWidth = jQuery( window ).width() 
 var windowHeight = jQuery( window ).height() 
-var links = ['web', 'print', 'about', 'contact']
-var opacity
-var zIndex
 
 window.onload = function(){
-    makeConfetti(donutCount, "donut")
-    makeConfetti(spotCount, "spot")
-    makeConfetti(rodCount, "rod")
-  }
+  makeConfetti(donutCount, "donut")
+  makeConfetti(spotCount, "spot")
+  makeConfetti(rodCount, "rod")
+}
+
+  //  - - - - posts - - - - 
+
+  jQuery(document).ready(function(){
+   jQuery(".script-post").click(function(){
+    window.location = jQuery(this).find("a").attr("href"); 
+    return false;
+  });
+ });
+
+  jQuery(document).ready(function(){
+    jQuery(".script-post").hover(
+      function(){
+        jQuery(this).find('img').css({'filter': 'none'})
+        jQuery(this).find('a').css({'color': 'black'})
+      },
+      function(){
+        jQuery(this).find('img').css({'filter': 'grayscale(1)' })
+        jQuery(this).find('a').css({'color': 'white'})
+
+      })
+
+  });
 
 //  - - - - front page confetti - - - - 
 
@@ -56,7 +76,7 @@ jQuery(function() {
 })
 
 
-//  - - - - navigation - - - - 
+//  - - - - navigation menu- - - - 
 
 jQuery(function() {
   for (i = 1; i <= 3; i++){
@@ -70,4 +90,5 @@ jQuery(function(){
     jQuery('#navigation-button').toggleClass("change");
   });
 })
+
 

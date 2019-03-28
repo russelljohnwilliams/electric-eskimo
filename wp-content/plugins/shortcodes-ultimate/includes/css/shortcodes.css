@@ -2001,8 +2001,7 @@
 /*		Posts
 ---------------------------------------------------------------*/
 .su-posts-default-loop .su-post {
-  margin-bottom: 2.5em;
-  line-height: 1.5;
+    line-height: 1.5;
 }
 
 .su-posts-default-loop .su-post:after {
@@ -2092,7 +2091,6 @@
 }
 
 .su-posts-single-post .su-post {
-  margin-bottom: 2.5em;
   line-height: 1.5;
 }
 

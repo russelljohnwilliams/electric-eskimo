@@ -128,8 +128,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
  abbr[title] {
  	border-bottom: none; /* 1 */
- 	text-decoration: underline; /* 2 */
- 	text-decoration: underline dotted; /* 2 */
+ 	text-decoration: none; /* 2 */
+ 	text-decoration: none; /* 2 */
  }
 
 /**
@@ -555,6 +555,10 @@ textarea {
 navigation-button
 . . . . . . . . . . . . . . . . . . . . . . . . . . */
 
+#masthead{
+	position: absolute;
+}
+
 #navigation-button{
 	width: 40px;
 	height: 40px;
@@ -693,6 +697,10 @@ a:visited {
 	color: auto;
 }
 
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
 
 /*--------------------------------------------------------------
 ## Menus
@@ -772,9 +780,57 @@ a:visited {
 }
 
 #main{
-	margin: 50px;
+	margin: 25px;
 }
 
+.script-post{
+	width: 50%;
+	float: left;
+	margin-bottom: 0;
+	height: calc(25vw - 25px);
+	cursor: pointer;
+}
+
+.script-post-comments-link, .script-post-meta{
+	display: none;
+}
+
+.script-post-thumbnail{
+	width: 50%;
+	height: calc(25vw - 25px);
+	margin: 0;
+	float: right;
+	overflow: hidden;
+}
+
+.script-post-thumbnail img{
+	width: auto;
+	height: 100%;
+	left: -10%;
+	position: relative;
+	filter: grayscale(1);
+}
+
+.script-post-title{
+	width: 50%;
+	display: inline;
+	top: 30%;
+	position: relative;
+	font-family: pacifico;
+	font-size: 2.2rem;
+}
+
+.script-post-title a, .script-post-thumbnail img{
+  transition: 1s;
+}
+
+.script-post-title-wrapper{
+	height: 100%;
+	width: 50%;
+	float: left;
+	position: relative;
+	text-align: center;
+}
 
 /*--------------------------------------------------------------
 ## Posts and pages
@@ -814,26 +870,26 @@ object {
 
 
 #title{
-  z-index: 30;
-  position: absolute;
-  top: 35vh;
-  left: 0;
-  width: 100vw;
-  text-align: center;
+	z-index: 30;
+	position: absolute;
+	top: 35vh;
+	left: 0;
+	width: 100vw;
+	text-align: center;
 }
 
 #electric, #eskimo{
-  display: inline;
-  font-family: Pacifico;
-  font-size: 6rem;
+	display: inline;
+	font-family: Pacifico;
+	font-size: 6rem;
 }
 
 #electric{
-  color: white;
+	color: white;
 }
 
 #eskimo{
-  color: #626059;
+	color: #626059;
 }
 
 
@@ -843,64 +899,64 @@ object {
 
 
 .donut{
-  border: solid 3px #FACF25;
-  height: 12px;
-  width: 12px;
-  border-radius: 100%;
-  position: absolute;
+	border: solid 3px #FACF25;
+	height: 12px;
+	width: 12px;
+	border-radius: 100%;
+	position: absolute;
 }
 
 .rod{
-  position: absolute;
-  background: white;
-  height: 17px;
-  width: 3px;
-  border-radius: 25px;
+	position: absolute;
+	background: white;
+	height: 17px;
+	width: 3px;
+	border-radius: 25px;
 }
 
 .spot{
-  position: absolute;
-  background: #BBD6DD;
-  height: 8px;
-  width: 8px;
-  border-radius: 100%;
+	position: absolute;
+	background: #BBD6DD;
+	height: 8px;
+	width: 8px;
+	border-radius: 100%;
 }
 
 #confettiWrapper{
-  height: 100vh;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
+	height: 100vh;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
 }
 
 #confetti{
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
-  -webkit-animation-name: sway; /* Safari 4.0 - 8.0 */
-  -webkit-animation-duration: 120s; /* Safari 4.0 - 8.0 */
-  -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
-  -webkit-animation-timing-function: linear;
-  animation-name: sway;
-  animation-duration: 120s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
+	-webkit-animation-name: sway; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: 120s; /* Safari 4.0 - 8.0 */
+	-webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+	-webkit-animation-timing-function: linear;
+	animation-name: sway;
+	animation-duration: 120s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes sway {
-  0%  {transform: rotate(-10deg); transform-origin: top;}
-  25% {transform: rotate(10deg)}
-  50% {transform: rotate(-10deg); transform-origin: bottom;}
-  75% {transform: rotate(10deg)}
-  100% {transform: rotate(-10deg); transform-origin: top;}
+	0%  {transform: rotate(-10deg); transform-origin: top;}
+	25% {transform: rotate(10deg)}
+	50% {transform: rotate(-10deg); transform-origin: bottom;}
+	75% {transform: rotate(10deg)}
+	100% {transform: rotate(-10deg); transform-origin: top;}
 }
 
 @keyframes sway {
-  0%  {transform: rotate(-10deg); transform-origin: top;}
-  25% {transform: rotate(10deg)}
-  50% {transform: rotate(-10deg); transform-origin: bottom;}
-  75% {transform: rotate(10deg)}
-  100% {transform: rotate(-10deg); transform-origin: top;}
+	0%  {transform: rotate(-10deg); transform-origin: top;}
+	25% {transform: rotate(10deg)}
+	50% {transform: rotate(-10deg); transform-origin: bottom;}
+	75% {transform: rotate(10deg)}
+	100% {transform: rotate(-10deg); transform-origin: top;}
 }
 
