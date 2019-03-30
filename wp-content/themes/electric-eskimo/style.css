@@ -702,6 +702,10 @@ a:hover, a:visited, a:link, a:active
     text-decoration: none;
 }
 
+.script-posts a{
+	color: black;
+}
+
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
@@ -774,7 +778,7 @@ a:hover, a:visited, a:link, a:active
 	z-index: 100;
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 }
@@ -791,6 +795,38 @@ a:hover, a:visited, a:link, a:active
 	cursor: pointer;
 }
 
+.script-post:nth-child(1){
+	background: teal;
+}
+
+.script-post:nth-child(2){
+	background: gold;
+}
+
+.script-post:nth-child(3){
+	background: crimson;
+}
+
+.script-post:nth-child(4){
+	background: darkgrey;
+}
+
+.script-post:nth-child(5){
+	background: seagreen;
+}
+
+.script-post:nth-child(6){
+	background: lightpink;
+}
+
+.script-post:nth-child(7){
+	background: coral;
+}
+
+.script-post:nth-child(8){
+	background: skyblue;
+}
+
 .script-post-comments-link, .script-post-meta{
 	display: none;
 }
@@ -800,15 +836,35 @@ a:hover, a:visited, a:link, a:active
 	height: calc(25vw - 25px);
 	margin: 0;
 	float: right;
-	overflow: hidden;
+
 }
 
+.script-post:nth-child(4n + 2) .script-post-thumbnail, .script-post:nth-child(4n + 1) .script-post-thumbnail{
+	float: left;
+}
+
+
+
 .script-post-thumbnail img{
-	width: auto;
+	width: 100%;
 	height: 100%;
-	left: -10%;
+	/*left: -10%;*/	
 	position: relative;
 	filter: grayscale(1);
+	mix-blend-mode: multiply;
+  transition: 0.8s;
+}
+
+
+
+.vignette{
+box-shadow: inset 0 0 100px black;
+height: 100%;
+width: 100%;
+/*display: none;*/
+position: relative;
+top: 0;
+left: 0;
 }
 
 .script-post-title{
@@ -821,7 +877,7 @@ a:hover, a:visited, a:link, a:active
 }
 
 .script-post-title a, .script-post-thumbnail img{
-  transition: 1s;
+  transition: 0.8s;
 }
 
 .script-post-title-wrapper{

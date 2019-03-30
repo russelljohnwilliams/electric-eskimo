@@ -5,11 +5,15 @@ var rodCount = 11
 var confettiCount = donutCount + spotCount + rodCount
 var windowWidth = jQuery( window ).width() 
 var windowHeight = jQuery( window ).height() 
+var height
+var width
 
 window.onload = function(){
   makeConfetti(donutCount, "donut")
   makeConfetti(spotCount, "spot")
   makeConfetti(rodCount, "rod")
+  setPostImageDimentions()
+  // hoverPosts()
 }
 
   //  - - - - posts - - - - 
@@ -21,19 +25,60 @@ window.onload = function(){
   });
  });
 
+
+
+  function setPostImageDimentions(){
+    var posts = jQuery(".script-posts").children()
+    console.log("kids", posts.length)
+
+    for (i = 0; i < posts.length; i++) {
+      var post = jQuery(posts[i])
+      var width = parseInt(post.find('img').css('width'), 10)
+      console.log("width", width)
+    }
+  }
+
+
   jQuery(document).ready(function(){
-    jQuery(".script-post").hover(
-      function(){
-        jQuery(this).find('img').css({'filter': 'none'})
-        jQuery(this).find('a').css({'color': 'black'})
-      },
-      function(){
-        jQuery(this).find('img').css({'filter': 'grayscale(1)' })
-        jQuery(this).find('a').css({'color': 'white'})
 
-      })
+    var post = jQuery(".script-post")
+    var height = parseInt(post.find('img').css('height'), 10)
+    var width = parseInt(post.find('img').css('width'), 10)
+    console.log
+    post.find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0', 'mix-blend-mode': 'multiply'})
 
+    post.mouseover(function(){
+      jQuery(this).find('img').css({'filter': 'none', 'height': (height + 6)+'px', 'width': (width + 6)+'px', 'top': '-3px', 'left': '-3px', 'mix-blend-mode': 'normal'})
+      jQuery(this).find('a').css({'color': 'white'})
+    });
+    post.mouseout(function(){
+      jQuery(this).find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0', 'mix-blend-mode': 'multiply'})
+      jQuery(this).find('a').css({'color': 'black'})
+    });
   });
+
+
+
+
+
+
+
+  // jQuery(document).ready(function(){
+  //   jQuery(".script-post").hover(
+  //     function(){
+  //        height = parseInt(jQuery(this).find('img').css('height'), 10)
+  //        width = parseInt(jQuery(this).find('img').css('width'), 10)
+  //       jQuery(this).find('script-post-thumbnail').css({'box-shadow': 'inset 0 0 100px black'})
+  //       jQuery(this).find('img').css({'filter': 'none', 'height': (height + 6)+'px', 'width': (width + 6)+'px', 'top': '-3px', 'left': '-3px', 'mix-blend-mode': 'normal'})
+  //       jQuery(this).find('a').css({'color': 'black'})
+  //     },
+  //     function(){
+  //       jQuery(this).find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0', 'mix-blend-mode': 'multiply'})
+  //       jQuery(this).find('script-post-thumbnail').css({'box-shadow': 'none'})
+
+  //       jQuery(this).find('a').css({'color': 'white'})
+  //     })
+  // });
 
 //  - - - - front page confetti - - - - 
 
