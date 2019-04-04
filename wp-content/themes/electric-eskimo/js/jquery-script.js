@@ -9,11 +9,12 @@ var height
 var width
 
 window.onload = function(){
+  headerTextColour()
+  parallax(jQuery(".post .post-thumbnail img"), -3);
   makeConfetti(donutCount, "donut")
   makeConfetti(spotCount, "spot")
   makeConfetti(rodCount, "rod")
-  setPostImageDimentions()
-  // hoverPosts()
+
 }
 
   //  - - - - posts - - - - 
@@ -26,19 +27,6 @@ window.onload = function(){
  });
 
 
-
-  function setPostImageDimentions(){
-    var posts = jQuery(".script-posts").children()
-    console.log("kids", posts.length)
-
-    for (i = 0; i < posts.length; i++) {
-      var post = jQuery(posts[i])
-      var width = parseInt(post.find('img').css('width'), 10)
-      console.log("width", width)
-    }
-  }
-
-
   jQuery(document).ready(function(){
 
     var post = jQuery(".script-post")
@@ -48,37 +36,17 @@ window.onload = function(){
     post.find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0', 'mix-blend-mode': 'multiply'})
 
     post.mouseover(function(){
-      jQuery(this).find('img').css({'filter': 'none', 'height': (height + 6)+'px', 'width': (width + 6)+'px', 'top': '-3px', 'left': '-3px', 'mix-blend-mode': 'normal'})
+      jQuery(this).find('.script-post-thumbnail').addClass('vignette')
+      jQuery(this).find('img').css({'filter': 'none', 'height': (height + 6)+'px', 'width': (width + 6)+'px', 'top': '-3px', 'left': '-3px'})
       jQuery(this).find('a').css({'color': 'white'})
     });
     post.mouseout(function(){
-      jQuery(this).find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0', 'mix-blend-mode': 'multiply'})
+      jQuery(this).find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0'})
       jQuery(this).find('a').css({'color': 'black'})
+      jQuery(this).find('.script-post-thumbnail').removeClass('vignette')
+
     });
   });
-
-
-
-
-
-
-
-  // jQuery(document).ready(function(){
-  //   jQuery(".script-post").hover(
-  //     function(){
-  //        height = parseInt(jQuery(this).find('img').css('height'), 10)
-  //        width = parseInt(jQuery(this).find('img').css('width'), 10)
-  //       jQuery(this).find('script-post-thumbnail').css({'box-shadow': 'inset 0 0 100px black'})
-  //       jQuery(this).find('img').css({'filter': 'none', 'height': (height + 6)+'px', 'width': (width + 6)+'px', 'top': '-3px', 'left': '-3px', 'mix-blend-mode': 'normal'})
-  //       jQuery(this).find('a').css({'color': 'black'})
-  //     },
-  //     function(){
-  //       jQuery(this).find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0', 'mix-blend-mode': 'multiply'})
-  //       jQuery(this).find('script-post-thumbnail').css({'box-shadow': 'none'})
-
-  //       jQuery(this).find('a').css({'color': 'white'})
-  //     })
-  // });
 
 //  - - - - front page confetti - - - - 
 
@@ -92,6 +60,14 @@ function makeConfetti(count, shape){
     jQuery('#' + setShapeID + '').css({'top': y, 'left': x, 'transform': 'rotate(' + z + 'deg)'})
     animate(setShapeID)
   }
+}
+
+function headerTextColour(){
+  var title = jQuery('.site-title a')
+  var text = title.text().split(' ')
+  var last = text.pop()
+
+  title.html([text, ' <span class="last-word">', last, '</span>'].join(''));
 }
 
 function randomNumberWindowWidth(){
@@ -135,5 +111,26 @@ jQuery(function(){
     jQuery('#navigation-button').toggleClass("change");
   });
 })
+
+//  - - - creates parallax on scroll - - -
+
+function parallax(object, speed){
+  jQuery(window).scroll(function(){
+  console.log("scroll")
+
+    var win = jQuery(window);
+    var obj = jQuery(object.parent());
+    var scrollPosition = win.scrollTop();
+    var visibleArea = win.scrollTop() + win.height();
+    var objectEndPosition = (obj.offset().top + obj.outerHeight());
+    var trueFalse = (visibleArea >= objectEndPosition && scrollPosition <= objectEndPosition ? true : false)
+    if (trueFalse == true){
+      var doc = jQuery(document).scrollTop();
+      var objTop = jQuery(obj).position().top;
+      object.css({"top" : (doc / (-speed )) });
+    }
+  });
+};
+
 
 

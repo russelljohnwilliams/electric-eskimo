@@ -8,6 +8,7 @@
  */
 
 ?>
+<div id=border></div>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
@@ -20,12 +21,6 @@
 
 		if ( 'post' === get_post_type() ) :
 			?>
-			<div class="entry-meta">
-				<?php
-				electric_eskimo_posted_on();
-				electric_eskimo_posted_by();
-				?>
-			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
@@ -54,6 +49,5 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php electric_eskimo_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
