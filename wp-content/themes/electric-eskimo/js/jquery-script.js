@@ -37,7 +37,7 @@ window.onload = function(){
 
     post.mouseover(function(){
       jQuery(this).find('.script-post-thumbnail').addClass('vignette')
-      jQuery(this).find('img').css({'filter': 'none', 'height': (height + 6)+'px', 'width': (width + 6)+'px', 'top': '-3px', 'left': '-3px'})
+      jQuery(this).find('img').css({'filter': 'none', 'height': (height + 10)+'px', 'width': (width + 10)+'px', 'top': '-5px', 'left': '-5px'})
       jQuery(this).find('a').css({'color': 'white'})
     });
     post.mouseout(function(){
@@ -47,6 +47,65 @@ window.onload = function(){
 
     });
   });
+
+
+  jQuery(document).ready(function(){
+
+    var post = jQuery(".wp-block-image")
+    var height = parseInt(post.find('img').css('height'), 10)
+    var width = parseInt(post.find('img').css('width'), 10)
+    post.find('img').css({'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0'})
+
+    post.mouseover(function(){
+      jQuery(this).find('figcaption').addClass('figcaption-show').css({'opacity': '1'})
+      jQuery(this).find('img').css({'filter': 'none', 'height': (height + 12)+'px', 'width': (width + 12)+'px'})
+    });
+    post.mouseout(function(){
+      jQuery(this).find('img').css({'height': height+'px', 'width': width+'px'})
+      jQuery(this).find('figcaption').removeClass('figcaption-show').css({'opacity': '0'})
+
+
+    });
+  });
+
+
+
+
+  // 1. set post sizes
+    // --- if number of posts are divisible by 2{ css }
+    // --- if divisible by 3 { css }
+
+  // 2. on window resize call function to set post sizes
+
+  // 3. click post to show image in lightbox
+
+// Function to open up a layer with to show an image
+
+jQuery(function() {
+  jQuery('figcaption').click(function(event){
+    var post = jQuery(this).parent()
+    post.find('img').removeAttr('style')
+    var clone = post.clone().removeClass('wp-block-image').addClass('lightbox').prependTo('.entry-content').hide().fadeIn()
+    var button = jQuery('<div class="close-button"><div class="line-1"></div><div class="line-2"></div></div>').appendTo(clone)
+    jQuery('.loghtbox .figcaption-show').remove()
+    closeTheLightbox()
+  });
+});
+
+
+
+// function to close layer that shows image
+
+function closeTheLightbox(){
+  jQuery('.close-button').click(function(event){
+    var post = jQuery(this).parent().fadeOut('slow', jQuery(this).parent().remove())
+    // post
+    // post.find('img').removeAttr('style')
+    // var clone = post.clone().removeClass('wp-block-image').addClass('lightbox').appendTo('.entry-content').hide().fadeIn()
+    // var button = jQuery('<div class="close-button"><div class="line-1"></div><div class="line-2"></div></div>').appendTo(clone)
+    // jQuery('.figcaption-show').remove()
+  });
+}
 
 //  - - - - front page confetti - - - - 
 
@@ -116,8 +175,6 @@ jQuery(function(){
 
 function parallax(object, speed){
   jQuery(window).scroll(function(){
-  console.log("scroll")
-
     var win = jQuery(window);
     var obj = jQuery(object.parent());
     var scrollPosition = win.scrollTop();
