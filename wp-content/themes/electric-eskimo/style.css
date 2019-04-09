@@ -556,8 +556,8 @@ navigation-button
 . . . . . . . . . . . . . . . . . . . . . . . . . . */
 
 #masthead{
-	position: absolute;
-	z-index: 5;
+/*	position: absolute;
+z-index: 5;*/
 }
 
 #navigation-button{
@@ -913,7 +913,7 @@ a:hover, a:visited, a:link, a:active
 .entry-content{
 	position: relative;
 	width: calc(100vw- 50px);
-	background: #f4f0ec;
+	background: #c6e5d9;
 	height: calc(100vh - 25px)
 }
 
@@ -932,16 +932,16 @@ a:hover, a:visited, a:link, a:active
 
 .entry-content-text{
 	position: relative;
-	top: -74vh;
+	top: -70vh;
 	z-index: 10;
-	padding-left: 25px;
-	width: calc(50% - 40px);
+	padding-left: 8vw;
+	width: 30%;
 	font-family: futura;
 
 }
 
 .entry-content-text p:nth-child(2n){
-	float: right;
+	text-align: right;
 }
 
 .entry-content-text p{
@@ -957,14 +957,15 @@ a:hover, a:visited, a:link, a:active
 }
 
 .post{
-	background:  #f4f0ec;
+	background:  #c6e5d9;
+	overflow: auto;
 }
 
 .site-title{
 	font-family: Pacifico;
 	font-size: 6rem;
 	position: absolute;
-	top: -5vh;
+	top: -15px;
 	width: 50vw;
 	left: 3vw;
 	margin: 0;
