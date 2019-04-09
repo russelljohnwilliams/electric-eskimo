@@ -9,75 +9,68 @@ var height
 var width
 
 window.onload = function(){
-  headerTextColour()
   parallax(jQuery(".post .post-thumbnail img"), -3);
   makeConfetti(donutCount, "donut")
   makeConfetti(spotCount, "spot")
   makeConfetti(rodCount, "rod")
-
 }
 
-  //  - - - - posts - - - - 
+//  - - - - splits header into two separate words so that second word can be re-styled - - - - 
 
-  jQuery(document).ready(function(){
-   jQuery(".script-post").click(function(){
-    window.location = jQuery(this).find("a").attr("href"); 
-    return false;
+jQuery(document).ready(function(){
+  var title = jQuery('.site-title a')
+  var text = title.text().split(' ')
+  var last = text.pop()
+  title.html([text, ' <span class="last-word">', last, '</span>'].join(''));
+})
+
+//  - - - - posts - - - - 
+
+jQuery(document).ready(function(){
+ jQuery(".script-post").click(function(){
+  window.location = jQuery(this).find("a").attr("href"); 
+  return false;
+});
+});
+
+
+//  - - - - creates hover over posts to change text and image styling - - - - 
+
+jQuery(document).ready(function(){
+  var post = jQuery(".script-post")
+  var height = parseInt(post.find('img').css('height'), 10)
+  var width = parseInt(post.find('img').css('width'), 10)
+  console.log
+  post.find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0', 'mix-blend-mode': 'multiply'})
+  post.mouseover(function(){
+    jQuery(this).find('.script-post-thumbnail').addClass('vignette')
+    jQuery(this).find('img').css({'filter': 'none', 'height': (height + 10)+'px', 'width': (width + 10)+'px', 'top': '-5px', 'left': '-5px'})
+    jQuery(this).find('a').css({'color': 'white'})
   });
- });
-
-
-  jQuery(document).ready(function(){
-
-    var post = jQuery(".script-post")
-    var height = parseInt(post.find('img').css('height'), 10)
-    var width = parseInt(post.find('img').css('width'), 10)
-    console.log
-    post.find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0', 'mix-blend-mode': 'multiply'})
-
-    post.mouseover(function(){
-      jQuery(this).find('.script-post-thumbnail').addClass('vignette')
-      jQuery(this).find('img').css({'filter': 'none', 'height': (height + 10)+'px', 'width': (width + 10)+'px', 'top': '-5px', 'left': '-5px'})
-      jQuery(this).find('a').css({'color': 'white'})
-    });
-    post.mouseout(function(){
-      jQuery(this).find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0'})
-      jQuery(this).find('a').css({'color': 'black'})
-      jQuery(this).find('.script-post-thumbnail').removeClass('vignette')
-
-    });
+  post.mouseout(function(){
+    jQuery(this).find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0'})
+    jQuery(this).find('a').css({'color': 'black'})
+    jQuery(this).find('.script-post-thumbnail').removeClass('vignette')
   });
+});
 
+//  - - - - creates hover over images to change text and image styling - - - - 
 
-  jQuery(document).ready(function(){
-
-    var post = jQuery(".wp-block-image")
-    var height = parseInt(post.find('img').css('height'), 10)
-    var width = parseInt(post.find('img').css('width'), 10)
-    post.find('img').css({'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0'})
-
-    post.mouseover(function(){
-      jQuery(this).find('figcaption').addClass('figcaption-show').css({'opacity': '1'})
-      jQuery(this).find('img').css({'filter': 'none', 'height': (height + 12)+'px', 'width': (width + 12)+'px'})
-    });
-    post.mouseout(function(){
-      jQuery(this).find('img').css({'height': height+'px', 'width': width+'px'})
-      jQuery(this).find('figcaption').removeClass('figcaption-show').css({'opacity': '0'})
-
-
-    });
+jQuery(document).ready(function(){
+  var post = jQuery(".wp-block-image")
+  var height = parseInt(post.find('img').css('height'), 10)
+  var width = parseInt(post.find('img').css('width'), 10)
+  post.find('img').css({'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0'})
+  post.mouseover(function(){
+    jQuery(this).find('figcaption').addClass('figcaption-show').css({'opacity': '1'})
+    jQuery(this).find('img').css({'filter': 'none', 'height': (height + 12)+'px', 'width': (width + 12)+'px'})
   });
+  post.mouseout(function(){
+    jQuery(this).find('img').css({'height': height+'px', 'width': width+'px'})
+    jQuery(this).find('figcaption').removeClass('figcaption-show').css({'opacity': '0'})
+  });
+});
 
-
-
-
-  // 1. set post sizes
-    // --- if number of posts are divisible by 2{ css }
-    // --- if divisible by 3 { css }
-
-  // 2. on window resize call function to set post sizes
-
-  // 3. click post to show image in lightbox
 
 // Function to open up a layer with to show an image
 
@@ -87,7 +80,7 @@ jQuery(function() {
     post.find('img').removeAttr('style')
     var clone = post.clone().removeClass('wp-block-image').addClass('lightbox').prependTo('.entry-content').hide().fadeIn()
     var button = jQuery('<div class="close-button"><div class="line-1"></div><div class="line-2"></div></div>').appendTo(clone)
-    jQuery('.loghtbox .figcaption-show').remove()
+    jQuery('.lightbox .figcaption-show').remove()
     closeTheLightbox()
   });
 });
@@ -99,11 +92,6 @@ jQuery(function() {
 function closeTheLightbox(){
   jQuery('.close-button').click(function(event){
     var post = jQuery(this).parent().fadeOut('slow', jQuery(this).parent().remove())
-    // post
-    // post.find('img').removeAttr('style')
-    // var clone = post.clone().removeClass('wp-block-image').addClass('lightbox').appendTo('.entry-content').hide().fadeIn()
-    // var button = jQuery('<div class="close-button"><div class="line-1"></div><div class="line-2"></div></div>').appendTo(clone)
-    // jQuery('.figcaption-show').remove()
   });
 }
 
@@ -121,13 +109,11 @@ function makeConfetti(count, shape){
   }
 }
 
-function headerTextColour(){
-  var title = jQuery('.site-title a')
-  var text = title.text().split(' ')
-  var last = text.pop()
+//  - - - - front page confetti - - - - 
 
-  title.html([text, ' <span class="last-word">', last, '</span>'].join(''));
-}
+
+
+
 
 function randomNumberWindowWidth(){
   return Math.floor(Math.random() * windowWidth + 1)
