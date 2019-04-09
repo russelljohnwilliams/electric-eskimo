@@ -871,10 +871,6 @@ a:hover, a:visited, a:link, a:active
 	background-color: white;
 }
 
-.vignette-post{
-	/*filter: brightness(0.8);*/	
-}
-
 .vignette{
 	box-shadow: inset 0 0 100px black;
 }
@@ -917,7 +913,6 @@ a:hover, a:visited, a:link, a:active
 .entry-content{
 	position: relative;
 	width: calc(100vw- 50px);
-	/*overflow: auto;*/
 	background: #f4f0ec;
 	height: calc(100vh - 25px)
 }
@@ -929,12 +924,10 @@ a:hover, a:visited, a:link, a:active
 .entry-content .wp-block-image{
 	width: calc((100vw - 80px) / 3);
 	height: calc((100vw - 80px) / 3);
-/*	width: calc(100% / 3);
-height: calc(100% / 3);*/
-overflow: hidden;
-margin-bottom: 0;
-margin: 5px;
-float: left;
+	overflow: hidden;
+	margin-bottom: 0;
+	margin: 5px;
+	float: left;
 }
 
 .entry-content-text{
@@ -961,7 +954,6 @@ float: left;
 	object-fit: cover;
 	transition: 0.6s;
 	position: relative;
-	/*filter: brightness(0.9);*/
 }
 
 .post{
@@ -1013,7 +1005,6 @@ float: left;
 .entry-header{
 	pointer-events: none;
 }
-
 
 .lightbox{
 	position: fixed;
@@ -1072,6 +1063,11 @@ float: left;
 	margin: auto;
 	padding-top: 20vh;
 	z-index: 900;
+	color: white;
+}
+
+.page-id-25 .entry-content{
+	background: #274555	;
 }
 
 .page-id-25{
@@ -1094,6 +1090,10 @@ float: left;
 	padding-top: 40vh;
 	text-align: center;
 	z-index: 900;
+}
+
+.page-id-27 .entry-content{
+	background: #6d9d88	;
 }
 
 .page-id-27{
