@@ -22,6 +22,9 @@ jQuery(document).ready(function(){
   var text = title.text().split(' ')
   var last = text.pop()
   title.html([text, ' <span class="last-word">', last, '</span>'].join(''));
+  
+  setTimeout(function(){title.parent().fadeIn('slow'); }, 1000);
+
 })
 
 //  - - - - posts - - - - 
@@ -71,7 +74,6 @@ jQuery(document).ready(function(){
   });
 });
 
-
 // Function to open up a layer with to show an image
 
 jQuery(function() {
@@ -80,12 +82,10 @@ jQuery(function() {
     post.find('img').removeAttr('style')
     var clone = post.clone().removeClass('wp-block-image').addClass('lightbox').prependTo('.entry-content').hide().fadeIn()
     var button = jQuery('<div class="close-button"><div class="line-1"></div><div class="line-2"></div></div>').appendTo(clone)
-    jQuery('.lightbox .figcaption-show').remove()
+    jQuery('.lightbox .figcaption-show').removeClass('figcaption-show').addClass('figcaption-clone')
     closeTheLightbox()
   });
 });
-
-
 
 // function to close layer that shows image
 

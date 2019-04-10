@@ -899,7 +899,7 @@ a:hover, a:visited, a:link, a:active
 	width: calc(100% - 50px);
 	position: fixed;
 	top: 80vh;
-	z-index: 500;
+	z-index: 5;
 	text-align: right;
 	font-family: Pacifico;
 	color: #626059;
@@ -917,6 +917,14 @@ a:hover, a:visited, a:link, a:active
 	height: calc(100vh - 25px)
 }
 
+.more{
+	position: absolute;
+	top: -8vh;
+	font-family: Raleway;
+	text-align: right;
+	width: 48%;
+}
+
 .page .entry-content{
 	padding: 0;
 }
@@ -931,12 +939,18 @@ a:hover, a:visited, a:link, a:active
 }
 
 .entry-content-text{
-	position: relative;
 	top: -70vh;
 	z-index: 10;
-	padding-left: 8vw;
-	width: 30%;
-	font-family: futura;
+	padding-left: 5vw;
+	position: absolute;
+	display: unset;
+	width: 38%;
+}
+
+.content-text{
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.8rem;
+	font-weight: 200;
 
 }
 
@@ -972,8 +986,13 @@ a:hover, a:visited, a:link, a:active
 	z-index: 200;
 }
 
+.site-title{
+	display: none;
+}
+
 .last-word{
 	color: #626059;
+	transition: 0.8s;
 }
 
 .post-navigation{
@@ -1020,9 +1039,17 @@ a:hover, a:visited, a:link, a:active
 
 .lightbox img{
 	margin: auto;
-	margin-top: 10vh;
+	margin-top: 9vh;
 	display: block;
 	height: 80vh;
+}
+
+.lightbox .figcaption-clone{
+	position: relative;
+	text-align: center;
+	color: white;
+	font-family: Raleway;
+	font-size: 1.7rem;
 }
 
 .close-button{
@@ -1060,11 +1087,13 @@ a:hover, a:visited, a:link, a:active
 --------------------------------------------------------------*/
 
 .about-page{
-	width: 75%;
+	width: 60%;
 	margin: auto;
-	padding-top: 20vh;
+	padding-top: 25vh;
 	z-index: 900;
 	color: white;
+	text-align: justify;
+	display: block;
 }
 
 .page-id-25 .entry-content{
@@ -1086,11 +1115,9 @@ a:hover, a:visited, a:link, a:active
 --------------------------------------------------------------*/
 
 .contact-page{
-	width: 75%;
-	margin: auto;
+	width: 100%;
 	padding-top: 40vh;
 	text-align: center;
-	z-index: 900;
 }
 
 .page-id-27 .entry-content{
