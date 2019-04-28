@@ -7,6 +7,7 @@ var windowWidth = jQuery( window ).width()
 var windowHeight = jQuery( window ).height() 
 var height
 var width
+var window = jQuery( window)
 
 window.onload = function(){
   parallax(jQuery(".post .post-thumbnail img"), -3);
@@ -43,7 +44,6 @@ jQuery(document).ready(function(){
   var post = jQuery(".script-post")
   var height = parseInt(post.find('img').css('height'), 10)
   var width = parseInt(post.find('img').css('width'), 10)
-  console.log
   post.find('img').css({'filter': 'grayscale(1)', 'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0', 'mix-blend-mode': 'multiply'})
   post.mouseover(function(){
     jQuery(this).find('.script-post-thumbnail').addClass('vignette')
@@ -60,30 +60,42 @@ jQuery(document).ready(function(){
 //  - - - - creates hover over images to change text and image styling - - - - 
 
 jQuery(document).ready(function(){
+  setPictureSizes()
+});
+
+function setPictureSizes(){
   var post = jQuery(".wp-block-image")
   var height = parseInt(post.find('img').css('height'), 10)
   var width = parseInt(post.find('img').css('width'), 10)
-  post.find('img').css({'height': height+'px', 'width': width+'px', 'top': '0', 'left': '0'})
+  post.find('img').css({'height': height+'px', 'width': height+'px', 'top': '0', 'left': '0'})
   post.mouseover(function(){
     jQuery(this).find('figcaption').addClass('figcaption-show').css({'opacity': '1'})
-    jQuery(this).find('img').css({'filter': 'none', 'height': (height + 12)+'px', 'width': (width + 12)+'px'})
+    jQuery(this).find('img').css({'filter': 'none', 'height': (height + 12)+'px', 'width': (height + 12)+'px'})
   });
   post.mouseout(function(){
-    jQuery(this).find('img').css({'height': height+'px', 'width': width+'px'})
+    jQuery(this).find('img').css({'height': height+'px', 'width': height+'px'})
     jQuery(this).find('figcaption').removeClass('figcaption-show').css({'opacity': '0'})
   });
-});
+}
+
+// jQuery(window).resize(function() {
+//   setPictureSizes()
+//   console.log("resize, yo!")
+// })
 
 // Function to open up a layer with to show an image
 
 jQuery(function() {
   jQuery('figcaption').click(function(event){
-    var post = jQuery(this).parent()
-    post.find('img').removeAttr('style')
-    var clone = post.clone().removeClass('wp-block-image').addClass('lightbox').prependTo('.entry-content').hide().fadeIn()
-    var button = jQuery('<div class="close-button"><div class="line-1"></div><div class="line-2"></div></div>').appendTo(clone)
-    jQuery('.lightbox .figcaption-show').removeClass('figcaption-show').addClass('figcaption-clone')
-    closeTheLightbox()
+    if (windowWidth > 600){
+
+      var post = jQuery(this).parent()
+      post.find('img').removeAttr('style')
+      var clone = post.clone().removeClass('wp-block-image').addClass('lightbox').prependTo('.entry-content').hide().fadeIn()
+      var button = jQuery('<div class="close-button"><div class="line-1"></div><div class="line-2"></div></div>').appendTo(clone)
+      jQuery('.lightbox .figcaption-show').removeClass('figcaption-show').addClass('figcaption-clone')
+      closeTheLightbox()
+    }
   });
 });
 

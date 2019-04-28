@@ -566,7 +566,7 @@ z-index: 5;*/
 	z-index: 60;
 	position: fixed;
 	top: 5vh;
-	left: calc(100vw - 85px);
+	left: calc(100% - 85px);
 }
 
 .bar{
@@ -601,7 +601,6 @@ navigation-drawer
 #primary-menu{
 	z-index: 50;
 	position: fixed;
-	top: 0;
 	height: 100%;
 	background: #626059;
 	overflow-x: hidden;
@@ -609,6 +608,7 @@ navigation-drawer
 	transition: 1.2s;
 	box-shadow: 0 0 50px rgba(0,0,0,.5);
 	width: 49%;
+	margin: 0;
 }
 
 #primary-menu li{
@@ -901,8 +901,8 @@ a:hover, a:visited, a:link, a:active
 	top: 80vh;
 	z-index: 5;
 	text-align: right;
-	font-family: Pacifico;
-	color: #626059;
+	font-family: 'Raleway', sans-serif;
+	color: lightslategray;
 	font-size: 2rem;
 }
 
@@ -912,15 +912,16 @@ a:hover, a:visited, a:link, a:active
 
 .entry-content{
 	position: relative;
-	width: calc(100vw- 50px);
+	width: 100%;
 	background: #c6e5d9;
-	height: calc(100vh - 25px)
+	height: calc(100vh - 25px);
+	margin-top: 10px;
 }
 
 .more{
 	position: absolute;
 	top: -8vh;
-	font-family: Raleway;
+	font-family: 'Raleway', sans-serif;
 	text-align: right;
 	width: 48%;
 }
@@ -929,15 +930,29 @@ a:hover, a:visited, a:link, a:active
 	padding: 0;
 }
 
-.entry-content .wp-block-image{
-	width: calc((100vw - 80px) / 3);
-	height: calc((100vw - 80px) / 3);
+.entry-content .wp-block-image, .entry-content .wp-block-video{
+	width: calc((100% - 60px) / 3);
+	height: calc((100vw - 110px) / 3);
 	overflow: hidden;
-	margin-bottom: 0;
+	margin: 0;
 	margin: 5px;
 	float: left;
+	border: solid 5px white;
 }
 
+.wp-block-video figcaption{
+	position: relative;
+	top: -95%;
+    color: white;
+}
+
+.wp-block-video{
+	background: black;
+}
+
+.wp-block-video video{
+	height: 100%;
+}
 .entry-content-text{
 	top: -70vh;
 	z-index: 10;
@@ -968,11 +983,13 @@ a:hover, a:visited, a:link, a:active
 	object-fit: cover;
 	transition: 0.6s;
 	position: relative;
+	min-width: 100%;
 }
 
 .post{
 	background:  #c6e5d9;
 	overflow: auto;
+	width: 100%;
 }
 
 .site-title{
@@ -999,7 +1016,7 @@ a:hover, a:visited, a:link, a:active
 	display: none;
 }
 
-.home .site-branding, .page-id-9 .site-branding, .page-id-11 .site-branding{
+.home .site-branding, .page-id-13 .site-branding, .page-id-22 .site-branding{
 	display: none;
 }
 
@@ -1014,10 +1031,11 @@ a:hover, a:visited, a:link, a:active
 	z-index: 10;
 	margin: 0;
 	opacity: 0;
+	font-family: 'Raleway', sans-serif;
 }
 
 .figcaption-show{
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.3);
 	box-shadow: inset 0 0 100px black;
 	height: 60%;
 }
@@ -1048,7 +1066,7 @@ a:hover, a:visited, a:link, a:active
 	position: relative;
 	text-align: center;
 	color: white;
-	font-family: Raleway;
+	font-family: 'Raleway', sans-serif;
 	font-size: 1.7rem;
 }
 
@@ -1089,25 +1107,27 @@ a:hover, a:visited, a:link, a:active
 .about-page{
 	width: 60%;
 	margin: auto;
-	padding-top: 25vh;
+	padding-top: 20vh;
 	z-index: 900;
 	color: white;
 	text-align: justify;
 	display: block;
 }
 
-.page-id-25 .entry-content{
+.page-id-20 .entry-content{
 	background: #274555	;
 }
 
-.page-id-25{
+.page-id-20{
 	overflow: hidden;
 }
 
-.page-id-25 #confetti{
+.page-id-20 #confetti{
 	position: absolute;
 	top: 0;
 	width: 95vw;
+	pointer-events: none;
+	opacity: 0.5;
 }
 
 /*--------------------------------------------------------------
@@ -1120,18 +1140,19 @@ a:hover, a:visited, a:link, a:active
 	text-align: center;
 }
 
-.page-id-27 .entry-content{
+.page-id-25 .entry-content{
 	background: #6d9d88	;
 }
 
-.page-id-27{
+.page-id-25{
 	overflow: hidden;
 }
 
-.page-id-27 #confetti{
+.page-id-25 #confetti{
 	position: absolute;
 	top: 0;
 	width: 95vw;
+	pointer-events: none;
 }
 
 /*--------------------------------------------------------------
@@ -1257,3 +1278,204 @@ object {
 	100% {transform: rotate(-10deg); transform-origin: top;}
 }
 
+
+
+
+
+
+
+/*--------------------------------------------------------------
+### About Page
+--------------------------------------------------------------*/
+
+.about-page{
+	width: 60%;
+	margin: auto;
+	padding-top: 25vh;
+	z-index: 900;
+	color: white;
+	text-align: justify;
+	display: block;
+}
+
+.page-id-25 .entry-content{
+	background: #274555	;
+}
+
+.page-id-25{
+	overflow: hidden;
+}
+
+.page-id-25 #confetti{
+	position: absolute;
+	top: 0;
+	width: 95vw;
+}
+
+/*--------------------------------------------------------------
+### Contact Page
+--------------------------------------------------------------*/
+
+.contact-page{
+	width: 100%;
+	padding-top: 40vh;
+	text-align: center;
+}
+
+.page-id-27 .entry-content{
+	background: #6d9d88	;
+}
+
+.page-id-27{
+	overflow: hidden;
+}
+
+.page-id-27 #confetti{
+	position: absolute;
+	top: 0;
+	width: 95vw;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+#border{
+	box-shadow: inset 0px 0px 0px 0px black;
+	/*border-radius: 10px;*/
+}
+
+#primary-menu{
+	width: 100%;
+	transition: 1.6s;
+	transition-timing-function: ease-in-out;
+	padding-top: 150px;
+	height: calc(100vh - 130px)
+}
+
+#electric, #eskimo {
+    font-size: 2.5rem;
+}
+
+.closed{
+	left: 0;
+	top: -105%;
+}
+
+.open{
+	left: 0;
+	top: -16px;
+}
+
+#primary-menu li{
+	font-size: 3rem;
+	margin-top: -35px;
+}
+
+.site-title{
+	font-size: 2.5rem;
+	width: 80%;
+	top: 1%;
+	position: fixed;	
+}
+
+#main{
+	margin: 0;
+}
+
+.entry-content {
+    height: 100vh;
+    margin: 0;
+    background: none;
+}
+
+#navigation-button{
+	position: fixed;
+	top: 3%;
+	left: 83%;
+}
+
+.post-25 .entry-content{
+	margin-top: -25px;
+}
+
+.about-page{
+	font-size: 1.1rem;
+}
+
+.last-word{
+	color: black;
+}
+
+.script-post-title{
+	font-size: 2rem;
+	top: 40%;
+}
+
+.script-post a{
+	color: white;
+}	
+
+.script-post {
+    width: 100vw;
+    float: left;
+    height: 100vw;
+}
+
+.script-post-thumbnail {
+    width: 100vw;
+    height: 100vw;
+    float: right;
+}
+
+.script-post-title-wrapper{
+	width: 100%;
+	top: -100%;
+}
+
+.post-thumbnail{
+	width: 100vw;
+	height: 100vw;
+	left: 0;
+	top: 0;
+}
+
+.post-thumbnail img{
+	margin-top: 75px;
+}
+
+.entry-content-text{
+	top: 0;
+	position: relative;
+
+	width: 70%;
+}
+
+.content-text{
+	font-size: 1.4rem;
+}
+
+.post{
+	background: lightgrey;
+}
+
+.post header {
+    width: 95%;
+    position: relative;
+    top: 13vh;
+    color: lightslategray;
+    font-size: 1rem;
+  }
+
+  .entry-content .wp-block-image, .entry-content .wp-block-video {
+      width: calc(100vw - 20px);
+      height: calc(100vw - 20px);
+      margin: 5px;
+      float: none;
+  }
+
+.more{
+	display: none;
+}
+
+}
